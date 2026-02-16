@@ -501,7 +501,7 @@ static gboolean get_sysattr_double (gchar *path, gchar *attribute, gdouble *valu
     g_free (sysattr_filename);
 
     if (sysattr_status == TRUE) {
-        gdouble double_value = g_ascii_strtod (sysattr_value, NULL);
+        gdouble double_value = fabs (g_ascii_strtod (sysattr_value, NULL));
 
         if (errno != 0 || double_value < 0.01) {
             sysattr_status = FALSE;
