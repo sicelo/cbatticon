@@ -1182,8 +1182,10 @@ static gchar* get_icon_name (gint state, gint percentage)
                  if (state == CHARGING) g_strlcat (icon_name, "-plugged", STR_LTH);
             else if (state == CHARGED)  g_strlcat (icon_name, "-plugged", STR_LTH);
         } else {
-                 if (percentage <= 20)  g_strlcat (icon_name, "-caution", STR_LTH);
-            else if (percentage <= 40)  g_strlcat (icon_name, "-low", STR_LTH);
+                 if (percentage <= configuration.critical_level)
+                                        g_strlcat (icon_name, "-caution", STR_LTH);
+            else if (percentage <= configuration.low_level)
+                                        g_strlcat (icon_name, "-low", STR_LTH);
             else if (percentage <= 80)  g_strlcat (icon_name, "-good", STR_LTH);
             else                        g_strlcat (icon_name, "-full", STR_LTH);
 
